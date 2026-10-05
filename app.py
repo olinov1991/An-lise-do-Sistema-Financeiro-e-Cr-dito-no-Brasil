@@ -1,7 +1,3 @@
-"""Dashboard Streamlit: Sistema Financeiro e Crédito no Brasil (2015–2024).
-
-Rodar:  streamlit run app.py
-"""
 import math
 from pathlib import Path
 
