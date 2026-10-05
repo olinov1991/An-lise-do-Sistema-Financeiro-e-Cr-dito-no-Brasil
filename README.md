@@ -9,7 +9,7 @@ Projeto G2 · Tema 28. Dashboard interativo e notebook de análise sobre concess
 | Entrega | Link |
 |---|---|
 | Dashboard (Streamlit Cloud) | |
-| Página do projeto (GitHub Pages) |  |
+| Página do projeto (GitHub Pages) | https://olinov1991.github.io/An-lise-do-Sistema-Financeiro-e-Cr-dito-no-Brasil/ |
 | Notebook | https://colab.research.google.com/drive/1c2nnd6N4kSPRy-9HTA27JhKLnK32VdTl#scrollTo=sYZAq6zEKgi1 |
 
 ## 🎯 Objetivo
