@@ -45,7 +45,7 @@ projeto-sistema-financeiro/
 ## ▶️ Como executar
 
 ```bash
-git clone https://github.com/SEU-USUARIO/projeto-sistema-financeiro.git
+git clone https://github.com/olinov1991/An-lise-do-Sistema-Financeiro-e-Cr-dito-no-Brasil
 cd projeto-sistema-financeiro
 pip install -r requirements.txt
 streamlit run app.py
@@ -85,4 +85,4 @@ jupyter notebook notebooks/analise_sistema_financeiro.ipynb
 
 ## 👤 Autor
 
-NOME DO ALUNO · NOME DA DISCIPLINA · Prof. NOME DO PROFESSOR
+ALUNO: leandro parreira novarino · DISCIPLINA: 2026.2 LINGUAGENS DE PROGRAMAÇÃO | SII1P0604N0001 · PROFESSOR: Alexandre Neves Louzada
