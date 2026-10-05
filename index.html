@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crédito no Brasil, 2015–2024 | Projeto G2 · Tema 28</title>
+<meta name="description" content="Análise de crédito, juros e inadimplência no sistema financeiro brasileiro (2015–2024) com Python, Pandas, Plotly e Streamlit.">
+<style>
+:root { --ink:#10222e; --muted:#4d6270; --paper:#f5f8f9; --white:#fff; --blue:#1f4e79; --line:#d5dee3; --serif:Charter,"Iowan Old Style","Palatino Linotype",Georgia,serif; --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:1rem/1.6 var(--sans); }
+a { color:var(--blue); }
+:focus-visible { outline:3px solid #f0a500; outline-offset:2px; }
+.wrap { max-width:68rem; margin:0 auto; padding:0 1.25rem; }
+header { padding:3.5rem 0 2.5rem; }
+.hero { display:grid; grid-template-columns:1fr; gap:2rem; align-items:center; }
+@media (min-width:56rem) { .hero { grid-template-columns:1fr 1.15fr; } }
+h1 { font:700 clamp(2rem,5vw,3.1rem)/1.1 var(--serif); margin:0 0 1rem; letter-spacing:-.01em; }
+h2 { font:700 1.5rem/1.2 var(--serif); margin:0 0 1rem; }
+.lede { font-size:1.125rem; max-width:34rem; color:var(--muted); margin:0 0 1.5rem; }
+.btns { display:flex; flex-wrap:wrap; gap:.75rem; }
+.btn { display:inline-block; padding:.7rem 1.1rem; border:2px solid var(--blue); border-radius:4px; font-weight:600; text-decoration:none; color:var(--blue); background:transparent; }
+.btn.main { background:var(--blue); color:#fff; }
+.btn:hover { background:var(--ink); border-color:var(--ink); color:#fff; }
+figure { margin:0; background:var(--white); border:1px solid var(--line); padding:1rem 1rem .75rem; }
+figure svg { width:100%; height:auto; display:block; }
+.v { font:600 11px var(--sans); fill:var(--ink); } .a { font:11px var(--sans); fill:var(--muted); }
+figcaption { font-size:.875rem; color:var(--muted); margin-top:.5rem; }
+section { padding:2.5rem 0; border-top:1px solid var(--line); }
+.achados { margin:0; }
+.achados div { display:grid; gap:.25rem 2rem; padding:1rem 0; border-bottom:1px solid var(--line); }
+@media (min-width:44rem) { .achados div { grid-template-columns:18rem 1fr; } }
+.achados dt { font:700 1.1rem/1.3 var(--serif); } .achados dd { margin:0; color:var(--muted); }
+.cols { display:grid; gap:2rem; grid-template-columns:1fr; }
+@media (min-width:44rem) { .cols { grid-template-columns:1fr 1fr; } }
+ol, ul { padding-left:1.25rem; margin:0; } li { margin:.35rem 0; }
+pre { background:var(--ink); color:#e6eef2; padding:1rem; overflow-x:auto; font:.875rem/1.5 ui-monospace,Menlo,Consolas,monospace; margin:0; }
+footer { padding:2rem 0 3rem; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap hero">
+  <div>
+   <h1>Crédito no Brasil, 2015–2024</h1>
+   <p class="lede">Dez anos de crédito, juros e inadimplência reunidos em um dashboard interativo. O achado central: o volume anual de crédito quase não se moveu.</p>
+   <div class="btns">
+    <a class="btn main" href="https://SEU-APP.streamlit.app">Abrir o dashboard</a>
+    <a class="btn" href="https://github.com/SEU-USUARIO/projeto-sistema-financeiro">Ver o código no GitHub</a>
+    <a class="btn" href="https://github.com/SEU-USUARIO/projeto-sistema-financeiro/blob/main/notebooks/analise_sistema_financeiro.ipynb">Ler o notebook</a>
+   </div>
+  </div>
+  <figure>
+   <svg viewBox="0 0 600 250" role="img" aria-labelledby="gt gd"><title id="gt">Volume anual de crédito, 2015 a 2024</title><desc id="gd">Dez barras de altura quase idêntica, entre R$ 2,17 e R$ 2,31 bilhões por ano.</desc><line x1="8" y1="216" x2="592" y2="216" stroke="#9fb1bc"/><rect x="16.8" y="48.4" width="40.9" height="167.6" fill="#1f4e79"/><text x="37.2" y="42.4" text-anchor="middle" class="v">2,229</text><text x="37.2" y="234" text-anchor="middle" class="a">2015</text><rect x="75.2" y="48.2" width="40.9" height="167.8" fill="#1f4e79"/><text x="95.6" y="42.2" text-anchor="middle" class="v">2,231</text><text x="95.6" y="234" text-anchor="middle" class="a">2016</text><rect x="133.6" y="47.7" width="40.9" height="168.3" fill="#1f4e79"/><text x="154.0" y="41.7" text-anchor="middle" class="v">2,238</text><text x="154.0" y="234" text-anchor="middle" class="a">2017</text><rect x="192.0" y="47.3" width="40.9" height="168.7" fill="#1f4e79"/><text x="212.4" y="41.3" text-anchor="middle" class="v">2,243</text><text x="212.4" y="234" text-anchor="middle" class="a">2018</text><rect x="250.4" y="45.1" width="40.9" height="170.9" fill="#1f4e79"/><text x="270.8" y="39.1" text-anchor="middle" class="v">2,273</text><text x="270.8" y="234" text-anchor="middle" class="a">2019</text><rect x="308.8" y="49.8" width="40.9" height="166.2" fill="#1f4e79"/><text x="329.2" y="43.8" text-anchor="middle" class="v">2,21</text><text x="329.2" y="234" text-anchor="middle" class="a">2020</text><rect x="367.2" y="42.1" width="40.9" height="173.9" fill="#1f4e79"/><text x="387.6" y="36.1" text-anchor="middle" class="v">2,313</text><text x="387.6" y="234" text-anchor="middle" class="a">2021</text><rect x="425.6" y="52.8" width="40.9" height="163.2" fill="#1f4e79"/><text x="446.0" y="46.8" text-anchor="middle" class="v">2,17</text><text x="446.0" y="234" text-anchor="middle" class="a">2022</text><rect x="484.0" y="46.6" width="40.9" height="169.4" fill="#1f4e79"/><text x="504.4" y="40.6" text-anchor="middle" class="v">2,253</text><text x="504.4" y="234" text-anchor="middle" class="a">2023</text><rect x="542.4" y="44.2" width="40.9" height="171.8" fill="#1f4e79"/><text x="562.8" y="38.2" text-anchor="middle" class="v">2,285</text><text x="562.8" y="234" text-anchor="middle" class="a">2024</text></svg>
+   <figcaption>Volume anual de crédito concedido (R$ bilhões). O eixo começa em zero: de 2015 a 2024 a variação total é de +2,5%.</figcaption>
+  </figure>
+ </div>
+</header>
+<main>
+ <section><div class="wrap">
+  <h2>O que a análise encontrou</h2>
+  <dl class="achados">
+   <div><dt>O crédito está estagnado</dt><dd>Foram R$ 22,4 bilhões em 4.440 registros, cerca de R$ 2,2 bilhões por ano. As oscilações anuais, de −6,2% a +4,7%, não formam tendência.</dd></div>
+   <div><dt>Juros e inadimplência não se relacionam</dt><dd>A correlação é de −0,01. A inadimplência fica perto de 10,6% em todas as faixas de juros.</dd></div>
+   <div><dt>O Sudeste lidera, mas por ter mais registros</dt><dd>Concentra 36% do volume, porém o crédito médio por operação é parecido em todas as regiões (R$ 4,9 a 5,2 milhões).</dd></div>
+   <div><dt>A classificação de risco quase não separa a inadimplência</dt><dd>Entre operações de risco Baixo e Alto a diferença é de cerca de 0,3 ponto percentual.</dd></div>
+  </dl>
+ </div></section>
+ <section><div class="wrap cols">
+  <div>
+   <h2>O que o dashboard oferece</h2>
+   <ul>
+    <li>6 filtros: ano, mês, região, estado, modalidade e risco.</li>
+    <li>6 indicadores: volume, juros, inadimplência, modalidade líder, região líder e prazo médio.</li>
+    <li>Gráficos de evolução, modalidades, regiões, heatmap mensal e dispersão entre juros e inadimplência.</li>
+    <li>Tabela dinâmica configurável e conclusão que se recalcula com os filtros.</li>
+   </ul>
+  </div>
+  <div>
+   <h2>Como foi feito</h2>
+   <ol>
+    <li>Limpeza e validação da base com Pandas.</li>
+    <li>Análise exploratória e indicadores no notebook.</li>
+    <li>Gráficos interativos com Plotly.</li>
+    <li>Dashboard em Streamlit.</li>
+    <li>Publicação no GitHub e no Streamlit Cloud.</li>
+   </ol>
+  </div>
+ </div></section>
+ <section><div class="wrap">
+  <h2>Estrutura do repositório</h2>
+<pre>projeto-sistema-financeiro/
+├── app.py
+├── requirements.txt
+├── index.html
+├── README.md
+├── dados/       simulacao_sistema_financeiro_brasil.csv
+├── notebooks/   analise_sistema_financeiro.ipynb
+├── imagens/     gráficos exportados
+└── database/</pre>
+ </div></section>
+</main>
+<footer><div class="wrap">
+ <p><strong>Atenção:</strong> a base é simulada. Os resultados descrevem esta base e não o mercado de crédito real.</p>
+ <p>Projeto G2 · Tema 28 · NOME DO ALUNO · NOME DA DISCIPLINA · Prof. NOME DO PROFESSOR</p>
+</div></footer>
+</body>
+</html>
